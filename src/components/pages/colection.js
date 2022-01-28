@@ -74,7 +74,7 @@ return (
   </section>
 
   <section className='container no-top'>
-        <div className='row'>
+        {/* <div className='row'>
           <div className='col-lg-12'>
               <div className="items_filter">
                 <ul className="de_nav">
@@ -83,7 +83,7 @@ return (
                 </ul>
             </div>
           </div>
-        </div>
+        </div> */}
       {openMenu && (  
         <div id='zero1' className='onStep fadeIn'>
          <ColumnZero/>

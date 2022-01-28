@@ -99,9 +99,6 @@ export default class Responsive extends Component {
             <CustomSlide className='itm' index={1}>
             <div className="d-item">
               <div className="nft__item">
-                  <div className="de_countdown">
-                  <Clock deadline={this.state.deadline} />
-                  </div>
                   <div className="author_list_pp">
                       <span onClick={()=> window.open("/home1", "_self")}>                                    
                           <img className="lazy" src="./img/author/author-1.jpg" alt=""/>

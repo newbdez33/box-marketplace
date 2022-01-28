@@ -205,7 +205,7 @@ export default class Responsive extends Component {
         {this.state.nfts.map( (nft, index) => (
             <div key={index} className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12">
                 <div className="nft__item">
-                    { nft.deadline &&
+                    { nft.deadline && false &&
                         <div className="de_countdown">
                             <Clock deadline={nft.deadline} />
                         </div>

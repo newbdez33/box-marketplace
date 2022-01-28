@@ -52,10 +52,6 @@ return (
                         </div>
                         <div className="col-md-6">
                             <div className="item_info">
-                                Auctions ends in 
-                                <div className="de_countdown">
-                                  <Clock deadline="December, 30, 2021" />
-                                </div>
                                 <h2>Pinky Ocean</h2>
                                 <div className="item_info_counts">
                                     <div className="item_info_type"><i className="fa fa-image"></i>Art</div>
