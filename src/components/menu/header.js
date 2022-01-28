@@ -28,13 +28,9 @@ const NavLink = props => (
 
 const Header= function() {
 
-    const [openMenu, setOpenMenu] = React.useState(false);
     const [openMenu1, setOpenMenu1] = React.useState(false);
     const [openMenu2, setOpenMenu2] = React.useState(false);
     const [openMenu3, setOpenMenu3] = React.useState(false);
-    const handleBtnClick = (): void => {
-      setOpenMenu(!openMenu);
-    };
     const handleBtnClick1 = (): void => {
       setOpenMenu1(!openMenu1);
     };
@@ -43,9 +39,6 @@ const Header= function() {
     };
     const handleBtnClick3 = (): void => {
       setOpenMenu3(!openMenu3);
-    };
-    const closeMenu = (): void => {
-      setOpenMenu(false);
     };
     const closeMenu1 = (): void => {
       setOpenMenu1(false);
@@ -56,9 +49,6 @@ const Header= function() {
     const closeMenu3 = (): void => {
       setOpenMenu3(false);
     };
-    const ref = useOnclickOutside(() => {
-      closeMenu();
-    });
     const ref1 = useOnclickOutside(() => {
       closeMenu1();
     });
@@ -84,7 +74,7 @@ const Header= function() {
           header.classList.remove("sticky");
           totop.classList.remove("show");
         } if (window.pageYOffset > sticky) {
-          closeMenu();
+          closeMenu1();
         }
       });
       return () => {
@@ -125,27 +115,6 @@ const Header= function() {
                 <Breakpoint l down>
                   {showmenu && 
                   <div className='menu'>
-                    <div className='navbar-item'>
-                      <div ref={ref}>
-                        <div className="dropdown-custom dropdown-toggle btn" 
-                          onClick={handleBtnClick}
-                          >
-                          Home
-                        </div>
-                        {openMenu && (
-                          <div className='item-dropdown'>
-                            <div className="dropdown" onClick={closeMenu}>
-                              <NavLink to=" " onClick={()=> window.open("http://gigaland.grey.on3-step.com", "_self")}>New Grey Scheme</NavLink>
-                              <NavLink to=" " onClick={()=> window.open("http://gigaland.retro.on3-step.com", "_self")}>New Retro Scheme</NavLink>
-                              <NavLink to="/" onClick={() => btn_icon(!showmenu)}>Homepage</NavLink>
-                              <NavLink to="/home1" onClick={() => btn_icon(!showmenu)}>Homepage 1</NavLink>
-                              <NavLink to="/home2" onClick={() => btn_icon(!showmenu)}>Homepage 2</NavLink>
-                              <NavLink to="/home3" onClick={() => btn_icon(!showmenu)}>Homepage 3</NavLink>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
                     <div className='navbar-item'>
                       <div ref={ref1}>
                         <div className="dropdown-custom dropdown-toggle btn" 
@@ -228,28 +197,6 @@ const Header= function() {
 
                 <Breakpoint xl>
                   <div className='menu'>
-                    <div className='navbar-item'>
-                        <div ref={ref}>
-                          <div className="dropdown-custom dropdown-toggle btn" 
-                             onMouseEnter={handleBtnClick} onMouseLeave={closeMenu}>
-                            Home
-                            <span className='lines'></span>
-                            {openMenu && (
-                            <div className='item-dropdown'>
-                              <div className="dropdown" onClick={closeMenu}>
-                                <NavLink to=" " onClick={()=> window.open("http://gigaland.grey.on3-step.com", "_self")}>New Grey Scheme</NavLink>
-                                <NavLink to=" " onClick={()=> window.open("http://gigaland.retro.on3-step.com", "_self")}>New Retro Scheme</NavLink>
-                                <NavLink to="/">Homepage</NavLink>
-                                <NavLink to="/home1">Homepage 1</NavLink>
-                                <NavLink to="/home2">Homepage 2</NavLink>
-                                <NavLink to="/home3">Homepage 3</NavLink>
-                              </div>
-                            </div>
-                          )}
-                          </div>
-                          
-                        </div>
-                    </div>
                     <div className='navbar-item'>
                       <div ref={ref1}>
                           <div className="dropdown-custom dropdown-toggle btn" 
