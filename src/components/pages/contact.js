@@ -1,11 +1,7 @@
-import React, { 
-  memo, 
-  useState 
-} from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import emailjs from 'emailjs-com';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
-import { postContactForm } from '../../store/actions/thunks';
 
 const GlobalStyles = createGlobalStyle`
   header#myHeader.navbar.sticky.white {
@@ -41,55 +37,25 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Contact = () => {
-  const useThunkDispatch = () => useDispatch();
-  const dispatch = useThunkDispatch();
+const contact= function() {
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleChangeName = (event) => {
-    const { value } = event.target;
-    setName(value);
-  }
-  const handleChangeEmail = (event) => {
-    const { value } = event.target;
-    setEmail(value);
-  }
-  const handleChangePhone = (event) => {
-    const { value } = event.target;
-    setPhone(value);
-  }
-  const handleChangeMessage = (event) => {
-    const { value } = event.target;
-    setMessage(value);
-  }
-
-  const sendEmail = async (e) => {
+  function sendEmail(e) {
 
     const success = document.getElementById("success");
     const button = document.getElementById("buttonsent");
     const failed = document.getElementById("failed");
     e.preventDefault();
-    try {
-      let form = {
-        name,
-        email,
-        phone,
-        message
-      };
 
-      await dispatch(postContactForm(form));
-      
-      success.classList.add('show');
-      button.classList.add('show');
-      failed.classList.remove('show');
-    } catch (error) {
-      console.log(error);
-      failed.classList.add('show');
-    }
+    emailjs.sendForm('gmail', 'template_csfdEZiA', e.target, 'user_zu7p2b3lDibMCDutH5hif')
+      .then((result) => {
+          console.log(result.text);
+          success.classList.add('show');
+          button.classList.add('show');
+          failed.classList.remove('show');
+      }, (error) => {
+          console.log(error.text);
+          failed.classList.add('show');
+      });
   }
 
   return (
@@ -116,10 +82,10 @@ const Contact = () => {
           <h3>Do you have any question?</h3>
             <div className="form-side">
               <form className="formcontact" onSubmit={sendEmail}>
-                <input onChange={handleChangeName} value={name} type="text" className="form-control" name="user_name" placeholder="Your Name" required />
-                <input onChange={handleChangeEmail} value={email} type="email" className="form-control" name="user_email" placeholder="Your Email" required />
-                <input onChange={handleChangePhone} value={phone} type="text" className="form-control" name="user_phone" placeholder="Your Phone" required />
-                <textarea onChange={handleChangeMessage} value={message} name="message" className="form-control" placeholder="Your Message" required />
+                <input type="text" className="form-control" name="user_name" placeholder="Your Name" required />
+                <input type="email" className="form-control" name="user_email" placeholder="Your Email" required />
+                <input type="text" className="form-control" name="user_phone" placeholder="Your Phone" required />
+                <textarea name="message" className="form-control" placeholder="Your Message" required />
                 <div id='success' className='hide'>Your message has been sent...</div>
                 <div id='failed' className='hide'>Message failed...</div>
                 <input type='submit' id='buttonsent' value='Submit Now' className="btn btn-main color-2" />
@@ -157,4 +123,4 @@ const Contact = () => {
     </div>
   );
 }
-export default memo(Contact);
+export default contact;

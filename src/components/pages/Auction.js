@@ -1,5 +1,5 @@
 import React from 'react';
-import ColumnAuctionRedux from '../components/ColumnAuctionRedux';
+import ColumnAuction from '../components/ColumnAuction';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 
@@ -55,7 +55,7 @@ const explore= () => (
   </section>
 
   <section className='container'>
-    <ColumnAuctionRedux/>
+    <ColumnAuction/>
   </section>
 
 

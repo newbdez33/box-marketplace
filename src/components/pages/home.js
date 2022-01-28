@@ -1,9 +1,9 @@
 import React from 'react';
 import SliderMain from '../components/SliderMain';
 import FeatureBox from '../components/FeatureBox';
-import CarouselCollectionRedux from '../components/CarouselCollectionRedux';
-import CarouselNewRedux from '../components/CarouselNewRedux';
-import AuthorListRedux from '../components/AuthorListRedux';
+import CarouselCollection from '../components/CarouselCollection';
+import CarouselNew from '../components/CarouselNew';
+import AuthorList from '../components/authorList';
 import Catgor from '../components/Catgor';
 import Footer from '../components/footer';
 
@@ -27,7 +27,7 @@ const home= () => (
             </div>
           </div>
           <div className='col-lg-12'>
-            <CarouselCollectionRedux/>
+            <CarouselCollection/>
           </div>
         </div>
       </section>
@@ -41,7 +41,7 @@ const home= () => (
             </div>
           </div>
           <div className='col-lg-12'>
-            <CarouselNewRedux/>
+            <CarouselNew/>
           </div>
         </div>
       </section>
@@ -55,7 +55,7 @@ const home= () => (
             </div>
           </div>
           <div className='col-lg-12'>
-            <AuthorListRedux/>
+            <AuthorList/>
           </div>
         </div>
       </section>

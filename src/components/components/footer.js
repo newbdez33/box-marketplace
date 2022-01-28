@@ -72,8 +72,7 @@ const footer= () => (
                                     <span onClick={()=> window.open("", "_self")}>
                                         <img alt="" className="f-logo d-1" src="./img/logo.png" />
                                         <img alt="" className="f-logo d-3" src="./img/logo-2-light.png" />
-                                        <img alt="" className="f-logo d-4" src="./img/logo-3.png" />
-                                        <span className="copy">&copy; Copyright 2021 - BOX NFT by Designesia</span>
+                                        <span className="copy">&copy; Copyright 2021 - Gigaland by Designesia</span>
                                     </span>
                                 </div>
                                 <div className="de-flex-col">

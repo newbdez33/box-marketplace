@@ -2,9 +2,9 @@ import React from 'react';
 import Particle from '../components/Particle';
 import SliderMainParticle from '../components/SliderMainParticle';
 import FeatureBox from '../components/FeatureBox';
-import CarouselCollectionRedux from '../components/CarouselCollectionRedux';
-import ColumnNewRedux from '../components/ColumnNewRedux';
-import AuthorListRedux from '../components/AuthorListRedux';
+import CarouselCollection from '../components/CarouselCollection';
+import ColumnNew from '../components/ColumnNew';
+import AuthorList from '../components/authorList';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 
@@ -61,7 +61,7 @@ const homeone= () => (
           </div>
         </div>
         
-        <ColumnNewRedux/>
+        <ColumnNew/>
         
         
       </section>
@@ -78,7 +78,7 @@ const homeone= () => (
         <div className='container'>
           <div className='row'>
             <div className='col-lg-12'>
-              <CarouselCollectionRedux/>
+              <CarouselCollection/>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ const homeone= () => (
             </div>
           </div>
           <div className='col-lg-12'>
-            <AuthorListRedux/>
+            <AuthorList/>
           </div>
         </div>
       </section>

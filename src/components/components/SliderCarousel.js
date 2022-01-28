@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { Link } from '@reach/router';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -75,13 +76,17 @@ export default class Responsive extends Component {
             <CustomSlide className='itm' index={1}>
               <div className="nft_pic">                            
                   <span>
+                    <Link to="/ItemDetail">
                       <span className="nft_pic_info">
                           <span className="nft_pic_title">Glass Cube</span>
                           <span className="nft_pic_by">Mamie Barnett</span>
                       </span>
+                    </Link>
                   </span>
                   <div className="nft_pic_wrap">
+                  
                       <img src="./img/carousel/crs-1.jpg" className="lazy img-fluid" alt=""/>
+                  
                   </div>
               </div>
             </CustomSlide>
@@ -89,10 +94,12 @@ export default class Responsive extends Component {
             <CustomSlide className='itm' index={2}>
              <div className="nft_pic">                            
                   <span >
+                    <Link to="/ItemDetail">
                       <span className="nft_pic_info">
                           <span className="nft_pic_title">Purple Ocean</span>
                           <span className="nft_pic_by">Monica Lucas</span>
                       </span>
+                    </Link>
                   </span>
                   <div className="nft_pic_wrap">
                       <img src="./img/carousel/crs-2.jpg" className="lazy img-fluid" alt=""/>
