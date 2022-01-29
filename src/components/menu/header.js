@@ -3,6 +3,9 @@ import Breakpoint, { BreakpointProvider, setDefaultBreakpoints } from "react-soc
 import { header } from 'react-bootstrap';
 import { Link } from '@reach/router';
 import useOnclickOutside from "react-cool-onclickoutside";
+import Web3 from 'web3'
+import Web3Modal from 'web3modal'
+import { ethers } from "ethers";
 
 
 setDefaultBreakpoints([
@@ -28,9 +31,50 @@ const NavLink = props => (
 
 const Header= function() {
 
+    const [connected, setConnected] = React.useState(false);
     const [openMenu1, setOpenMenu1] = React.useState(false);
     const [openMenu2, setOpenMenu2] = React.useState(false);
     const [openMenu3, setOpenMenu3] = React.useState(false);
+    useEffect( async () => {
+      const checkConnection = async () => {
+
+        // Check if browser is running Metamask
+        let web3: any;
+        if (window.ethereum) {
+            web3 = new Web3(window.ethereum);
+        } else if (window.web3) {
+            web3 = new Web3(window.web3.currentProvider);
+        };
+
+        // Check if User is already connected by retrieving the accounts
+        web3.eth.getAccounts()
+            .then(async (addr: string) => {
+                // Set User account into state
+                if ( addr.length > 0) {
+                  console.log(addr)
+                  setConnected(true)
+                }
+            });
+    };
+    checkConnection();
+  }, [])
+
+    const connectMetamask = async () => {
+      let web3: any;
+      if (window.ethereum) {
+          web3 = new Web3(window.ethereum);
+      } else if (window.web3) {
+          web3 = new Web3(window.web3.currentProvider);
+      };
+      
+      const web3Modal = new Web3Modal()
+      const connection = await web3Modal.connect()
+      console.log(`metamask is ${connection.isConnected ? 'connected':'not connect'}`)
+      window.web3 = web3Modal
+      console.log(connection.isConnected())
+      setConnected(connection.isConnected())
+    }
+
     const handleBtnClick1 = (): void => {
       setOpenMenu1(!openMenu1);
     };
@@ -149,7 +193,12 @@ const Header= function() {
               </BreakpointProvider>
 
               <div className='mainside'>
-                <NavLink to="/wallet" className="btn-main">Connect Wallet</NavLink>
+                { !connected && (
+                  <div to="/wallet" className="btn-main" onClick={connectMetamask.bind(this)}>Connect Wallet</div>
+                )}
+                { connected && (
+                  <div to="/wallet" className="btn-main" onClick={connectMetamask.bind(this)}>Connected</div>
+                )}
               </div>
                   
       </div>

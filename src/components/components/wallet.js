@@ -1,9 +1,19 @@
 import React from 'react';
+import { ethers } from "ethers";
+import Web3Modal from 'web3modal'
 
+const connectMetamask = async () => {
+    const web3Modal = new Web3Modal()
+    const connection = await web3Modal.connect()
+    const provider = new ethers.providers.Web3Provider(connection)
+    const signer = provider.getSigner()
+    console.log(signer)
+}
 
 const Wallet= () => (
+
   <div className="row">
-    <div className="col-lg-3 mb30">
+    <div className="col-lg-3 mb30" onClick={connectMetamask}>
         <span className="box-url">
             <span className="box-url-label">Most Popular</span>
             <img src="./img/wallet/1.png" alt="" className="mb20"/>
@@ -11,7 +21,7 @@ const Wallet= () => (
             <p>Start exploring blockchain applications in seconds.  Trusted by over 1 million users worldwide.</p>
         </span>
     </div>
-
+{/* 
     <div className="col-lg-3 mb30">
         <span className="box-url">
             <img src="./img/wallet/2.png" alt="" className="mb20"/>
@@ -68,7 +78,7 @@ const Wallet= () => (
             <h4>Torus</h4>
             <p>Open source protocol for connecting decentralised applications to mobile wallets.</p>
         </span>
-    </div>                                  
+    </div>                                   */}
 </div>
 );
 export default Wallet;
